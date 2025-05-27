@@ -1,79 +1,39 @@
-### **How to Compile and Run the Project**
+# 🗝 Paxos-Based Distributed Key-Value Store
 
-This project includes a **key-value store** that works using **RMI** and use **Paxos**.
-Below are the steps to **compile** and **run** the servers and clients.
-
----
-
-### **1. Compiling the Java Files**
-Before running the project, you need to **compile all Java files**.
-
-1. Open a terminal and navigate to the `src` directory where all Java files are located.
-2. Run the following command to compile all files:
-
-   ```
-   javac -d out $(find . -name "*.java")
-   ```
-
-    - This will compile all Java files and store the compiled class files in the `out` directory.
+A fault-tolerant, distributed key-value store built in Java using multithreading, **Remote Method Invocation (RMI)**, and the **Paxos consensus algorithm**. This system ensures consistency across multiple replicas and handles node failures gracefully using simulated thread crashes and health checks.
 
 ---
 
-### **2. Running the Server and Client**
-#### **Start the Server**
-- Open a terminal.
-- Run the following command:
+## 🔍 Overview
 
-  ```
-  java -cp out server.Main <port>
-  ```
-
-- Example:
-  ```
-  java -cp out server.Main 1099
-  ```
-  This starts the **server** and **RMI Registry** on port **1099**.
-
-- Basically, we run a load balancer on the server here, and it forwards the requests to one of the
-- replica instance by round-robin.
-
-#### **Run the Client**
-- Open another terminal.
-- Run the following command:
-
-  ```
-  java -cp out client.Client <hostname/IP> <port>
-  ```
-
-- Example:
-  ```
-  java -cp out client.Client localhost 1099
-  ```
-  This connects the client to the server running on **localhost:1099**.
+This project was developed as part of a Distributed Systems course and focuses on practical implementation of consensus protocols. It uses Paxos for achieving agreement between replicated servers, ensuring the correct value is committed even during crashes or network partitions.
 
 ---
 
-### **4. Using the Clients**
-Once the client is running, it is very intuitive:
+## ⚙️ Features
 
-- **PUT key value** → Stores a value for a given key.
-- **GET key** → Retrieves the value of the given key.
-- **DELETE key** → Removes the key-value pair from the store.
-- **EXIT** → Closes the client.
-
-Example:
-```
-PUT name John
-GET name
-DELETE name
-EXIT
-```
+- 💾 Key-Value storage with **PUT**, **GET**, and **DELETE**
+- 📡 **Java RMI** for inter-replica communication
+- 🔁 **Paxos algorithm** to handle replica failures and ensure consistency
+- 🧠 Simulated node/thread failure and restart logic
+- 🧵 Multithreaded servers for concurrent request handling
+- 🧪 Modular design for easy extension and testing
 
 ---
 
-### **5. Stopping the Servers**
-- To stop the server, press **CTRL + C** or **Stop** from your IDE in the terminal where it is running.
+## 🛠 Tech Stack
+
+- **Language:** Java
+- **Communication:** Java RMI
+- **Consensus Protocol:** Paxos (multi-threaded roles)
+- **Build:** Manual (javac)
+- **Architecture:** Peer-to-peer replica coordination
 
 ---
 
-Now you are ready to compile and run the project!
+## 📦 Compilation
+
+Open a terminal and navigate to the `src` directory, then run:
+
+```bash
+javac -d out $(find . -name "*.java")
